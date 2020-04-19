@@ -16,6 +16,7 @@ public class CheckoutService {
 
 //    Starting
     public void start(double shoppingCartTotal){
+//        Calling the classes in DiscountGuiceModule
         for (Discountable discountable: discountables) {
             checkout(discountable.getDiscount(), shoppingCartTotal);
         }
