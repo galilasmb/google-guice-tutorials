@@ -1,7 +1,7 @@
 package com.mvpjava.guicetutorial.singleImpl;
-import com.google.inject.ImplementedBy;
+/*import com.google.inject.ImplementedBy;
 
-@ImplementedBy(EarlyBirdDiscount.class)  
+@ImplementedBy(EarlyBirdDiscount.class)  */
 public interface Discountable {
     double getDiscount ();
 }

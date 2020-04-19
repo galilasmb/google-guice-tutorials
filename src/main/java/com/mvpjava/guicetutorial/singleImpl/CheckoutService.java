@@ -2,22 +2,30 @@ package com.mvpjava.guicetutorial.singleImpl;
 
 import com.google.inject.Inject;
 
+import java.util.Set;
+
 public class CheckoutService {
 
-    private final Discountable discountable;
+    private Set<Discountable> discountables;
 
+//    Doing the Inject with the classes
     @Inject
-    public CheckoutService(Discountable discountable) {
-        this.discountable = discountable;
+    public CheckoutService(Set<Discountable> discountables) {
+        this.discountables = discountables;
     }
 
-    public double checkout(double shoppingCartTotal) {
-        double totalAfterDiscount = shoppingCartTotal - (shoppingCartTotal * discountable.getDiscount());
-        System.out.printf("%nShopping cart initially [$%.2f] with a discount of %.2f%% = [$%.2f]%n%n",
-                shoppingCartTotal,
-                discountable.getDiscount() * 100,
-                totalAfterDiscount);
+//    Starting
+    public void start(double shoppingCartTotal){
+        for (Discountable discountable: discountables) {
+            checkout(discountable.getDiscount(), shoppingCartTotal);
+        }
+    }
 
+//    Print the discountables
+    public double checkout(double discountable, double shoppingCartTotal) {
+        double totalAfterDiscount = shoppingCartTotal - (shoppingCartTotal * discountable);
+        System.out.printf("%nShopping cart initially [$%.2f] with a discount of %.2f%% = [$%.2f]%n%n",
+                shoppingCartTotal, discountable * 100, totalAfterDiscount);
         return totalAfterDiscount;
     }
 }
