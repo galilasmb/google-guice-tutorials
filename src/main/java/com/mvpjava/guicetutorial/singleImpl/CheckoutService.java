@@ -24,7 +24,7 @@ public class CheckoutService {
 //    Print the discountables
     public double checkout(double discountable, double shoppingCartTotal) {
         double totalAfterDiscount = shoppingCartTotal - (shoppingCartTotal * discountable);
-        System.out.printf("%nShopping cart initially [$%.2f] with a discount of %.2f%% = [$%.2f]%n%n",
+        System.out.printf("Shopping cart initially [$%.2f] with a discount of %.2f%% = [$%.2f]%n",
                 shoppingCartTotal, discountable * 100, totalAfterDiscount);
         return totalAfterDiscount;
     }
